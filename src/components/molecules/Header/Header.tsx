@@ -2,6 +2,7 @@
 import React from 'react';
 import styles from './Header.module.scss'
 import Link from 'next/link';
+import Image from 'next/image';
 
 const Header = () => {
     const Menu = React.createRef<HTMLUListElement>();
@@ -17,7 +18,7 @@ const Header = () => {
     return (
         <header className={styles.Header}>
             <div>
-                <Link href={'/'}>Logo</Link>
+                <Link href={'/'}><Image width={80} height={80} src={'/XICA.png'} alt={'Coletiva Intertransvestigênere Xica Manicongo'} /></Link>
             </div>
             <nav className={styles.Header__Menu} ref={Menu}>
                 <ul className={styles.Header__navigation}>

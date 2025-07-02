@@ -1,26 +1,15 @@
-import CardDisplay from "@/components/organisms/CardDisplay/CardDisplay";
-import { getAllEntries } from '@/api/Contentful'
+import { getEntry } from '@/api/Contentful'
+import Title from "@/components/atoms/Title/Title";
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import styles from './page.module.scss'
 
-export default async function Home() {
-
-  const data = await getAllEntries();
-  const Cards = data.data.postCollection.items.map((item: any) => {
-    return (
-      {
-        title: item.title,
-        description: item.description,
-        link: `/${item.title}`,
-        image: {src: item.image.src.url, alt: item.image.alt},
-        tag: item.tagsCollection.items.map((tag: { title: any; color: any; }) => {
-          return(
-            {title: tag.title, color: tag.color}
-          )
-        })
-      }
-    )
-  });
+export default async function Slug() {
+  const data = await getEntry("post", "Bill Walsh leadership lessons");
+  const text = documentToReactComponents(data.data.postCollection.items[0].texto.json);
   return (
-    <>
-      <CardDisplay Cards={Cards} title={"Todos os Posts"}></CardDisplay>
-    </>);
+    <div className={styles.PostPage}>
+      <Title>Bill Walsh leadership lessons</Title>
+      <img src={data.data.postCollection.items[0].image.src.url} alt={data.data.postCollection.items[0].image.alt} />
+      {text}
+    </div>);
 }

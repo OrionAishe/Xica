@@ -15,16 +15,17 @@ const PAGE_GRAPHQL_FIELDS = `
 }
 `;
 
-const TAGS_GRAPHQL_FIELDS = `
- 	title,
-  description,
-  image{
+const POST_GRAPHQL_FIELDS = `
+texto{
+      json
+    },
+image{
     src{
-      url
+        url
     },
     alt
-  },
-`;
+},
+`
 
 async function fetchGraphQL(query: string) {
     const headers = {
@@ -67,24 +68,18 @@ export async function getAllEntries(limit = 100) {
 }
 
 export async function getEntry(contentType: any, title: any) {
-    function items() {
-        switch (contentType) {
-            case "page":
-                return PAGE_GRAPHQL_FIELDS;
-        }
-    };
 
     try {
         const entry = await fetchGraphQL(
             `query {
-        ${contentType}Collection(
+          postCollection (
           where: { title: "${title}" },
           limit: 1,
           preview: false
         ) {
-          items {
-            ${items()}
-          }
+        items {
+          ${POST_GRAPHQL_FIELDS}
+        }
         }
       }`
         );
