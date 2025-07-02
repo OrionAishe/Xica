@@ -7,9 +7,7 @@ const Header = () => {
     const Menu = React.createRef<HTMLUListElement>();
     const Navigation = [
         { title: 'Blog', link: '/' },
-        { title: 'Projetos', link: '/' },
-        { title: 'Sobre', link: '/' },
-        { title: 'Newsletter', link: '/' }
+        { title: 'Sobre', link: '/sobre' },
     ]
     function OpenNav(e: any) {
         e.currentTarget.classList.toggle(styles.Open);
@@ -19,7 +17,7 @@ const Header = () => {
     return (
         <header className={styles.Header}>
             <div>
-                Logo
+                <Link href={'/'}>Logo</Link>
             </div>
             <nav className={styles.Header__Menu} ref={Menu}>
                 <ul className={styles.Header__navigation}>

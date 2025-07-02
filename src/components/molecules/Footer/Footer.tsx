@@ -11,11 +11,11 @@ const Footer = () => {
             <ul className={styles.Footer__Navigation}>
                 {footerLinks.map((item, index) => {
                     return (
-                        <li><Link key={index} href={item.link}>{item.name}</Link></li>
+                        <li key={index}><Link href={item.link}>{item.name}</Link></li>
                     )
                 })}
             </ul>
-            © 2025
+            <Link href={"https://github.com/OrionAishe"}>© 2025 Orion Aishe Antonucci</Link>
         </footer>
     )
 }

@@ -9,7 +9,7 @@ const CardDisplay = (props: props) => {
     const { Cards, title } = props;
     return (
         <div className={styles.CardDisplay}>
-            <h2>{title}</h2>
+            <h2 className={styles.CardDisplay__Title}>{title}</h2>
             <div className={styles.CardDisplay__Cards}>
                 {Cards.map((item, index) => {
                     return (

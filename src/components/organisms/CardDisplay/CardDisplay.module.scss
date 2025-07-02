@@ -3,10 +3,17 @@
     flex-direction: column;
     gap: 32px;
     padding: 30px 20px;
+    justify-content: center;
+    align-items: center;
 
     @media(min-width: 820px) {
         padding: 30px 5vw;
     }
+}
+
+.CardDisplay__Title{
+    align-self: flex-start;
+    justify-self: start;
 }
 
 .CardDisplay__Cards {
