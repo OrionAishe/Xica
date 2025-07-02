@@ -1,6 +1,6 @@
 import styles from './Tag.module.scss'
 
-interface props {
+export interface props {
     title: string;
     color: string;
 }

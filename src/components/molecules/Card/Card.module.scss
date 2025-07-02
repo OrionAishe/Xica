@@ -1,0 +1,18 @@
+.Card{
+    display: flex;
+    flex-direction: column;
+    max-width: 384px;
+}
+
+.Card__Tags{
+    display: flex;
+    margin-top: 24px;
+    gap: 8px;
+}
+
+.Card__Text{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 32px;
+}
