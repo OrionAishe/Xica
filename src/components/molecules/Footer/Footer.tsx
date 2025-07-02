@@ -9,9 +9,9 @@ const Footer = () => {
     return (
         <footer className={styles.Footer}>
             <ul className={styles.Footer__Navigation}>
-                {footerLinks.map((item) => {
+                {footerLinks.map((item, index) => {
                     return (
-                        <li><Link href={item.link}>{item.name}</Link></li>
+                        <li><Link key={index} href={item.link}>{item.name}</Link></li>
                     )
                 })}
             </ul>

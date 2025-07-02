@@ -1,8 +1,9 @@
 import Tag, { props as Tagprops } from '@/components/atoms/Tag/Tag';
 import styles from './Card.module.scss';
 import Link from 'next/link';
+import Image from 'next/image';
 
-interface props {
+export interface props {
     image: {
         src: string;
         alt: string;
@@ -17,7 +18,7 @@ const Card = (props: props) => {
     const { title, description, image, tag, link } = props;
     return (
         <Link className={styles.Card} href={link}>
-            <img src={image.src} alt={image.alt} />
+            <Image width={384} height={240} src={image.src} alt={image.alt} />
             <div className={styles.Card__Text}>
                 <h2>{title}</h2>
                 <p>{description}</p>

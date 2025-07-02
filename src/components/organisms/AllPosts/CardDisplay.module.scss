@@ -1,0 +1,26 @@
+.CardDisplay {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding: 30px 20px;
+
+    @media(min-width: 820px) {
+        padding: 30px 5vw;
+    }
+}
+
+.CardDisplay__Cards {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 32px;
+
+    @media(min-width: 890px) {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 32px;
+    }
+
+    @media(min-width: 1350px) {
+        grid-template-columns: repeat(3, 1fr);
+
+    }
+}
