@@ -1,0 +1,25 @@
+.Tag {
+    padding: 5px 20px;
+    width: fit-content;
+    border-radius: 50px;
+
+    &.red {
+        background-color: #FDF2FA;
+        color: #C11574;
+    }
+
+    &.blue{
+        background-color: #F0F9FF;
+        color: #026AA2;
+    }
+
+    &.green{
+        background-color: #ECFDF3;
+        color: #027A48;
+    }
+
+    &.purple{
+        background-color: #F9F5FF;
+        color: #6941C6;
+    }
+}
