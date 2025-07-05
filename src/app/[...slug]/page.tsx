@@ -4,13 +4,7 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { BLOCKS } from '@contentful/rich-text-types';
 import styles from './page.module.scss'
 
-interface BlogPostProps {
-  params: {
-    slug: string;
-  };
-}
-
-export default async function BlogPost({ params }: BlogPostProps) {
+export default async function BlogPost(params : any) {
   const { slug } = await params;
   const data = await getEntry("post", URLtoTitle(slug[0]));
   const richtext = await getRichText(URLtoTitle(slug[0]));
