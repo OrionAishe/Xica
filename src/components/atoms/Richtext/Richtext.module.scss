@@ -1,0 +1,8 @@
+.Richtext__Image{
+    width: 90vw;
+
+    @media(min-width: 820px){
+        width: fit-content;
+        height: fit-content;
+    }
+}

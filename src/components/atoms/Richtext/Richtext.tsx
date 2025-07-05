@@ -1,5 +1,6 @@
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { BLOCKS } from '@contentful/rich-text-types';
+import styles from './Richtext.module.scss'
 
 interface props {
     text: any;
@@ -11,6 +12,7 @@ const Richtext = ({text}: props) => {
       [BLOCKS.EMBEDDED_ASSET]: (node: any) => {
         return (
           <img
+            className={styles.Richtext__Image}
             src={`https://${node.data.target.fields.file.url}`}
             height={node.data.target.fields.file.details.image.height}
             width={node.data.target.fields.file.details.image.width}

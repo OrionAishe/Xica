@@ -1,5 +1,9 @@
 .Title{
     text-align: center;
-    font-size: 45px;
     margin-top: 50px;
+    font-size: 25px;
+
+    @media(min-width: 820px){
+        font-size: 45px;
+    }
 }

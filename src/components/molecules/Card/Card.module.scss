@@ -1,18 +1,66 @@
-.Card{
+.Card {
     display: flex;
     flex-direction: column;
     max-width: 384px;
+    gap: 32px;
 }
 
-.Card__Tags{
+.Card__Image{
+    width: 90vw;
+    @media(min-width: 820px){
+        width: fit-content;
+    }
+}
+
+.Card0 {
+    @media(min-width: 890px) {
+        grid-area: Card0;
+        max-width: max-content;
+        .Card__Image {
+            width: 770px;
+        }
+    }
+
+    @media(min-width: 1350px) {
+
+        .Card__Image {
+            width: 592px;
+        }
+    }
+}
+
+.Card1 {
+    @media(min-width: 890px) {
+        grid-area: Card1;
+        flex-direction: row;
+        max-width: max-content;
+
+        .Card__Image {
+            width: 320px;
+        }
+    }
+}
+
+.Card2 {
+    @media(min-width: 890px) {
+        grid-area: Card2;
+        flex-direction: row;
+        max-width: max-content;
+
+        .Card__Image {
+            width: 320px;
+        }
+    }
+}
+
+.Card__Tags {
     display: flex;
     margin-top: 24px;
     gap: 8px;
 }
 
-.Card__Text{
+.Card__Text {
     display: flex;
     flex-direction: column;
     gap: 12px;
-    margin-top: 32px;
 }

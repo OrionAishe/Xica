@@ -5,3 +5,13 @@
     align-items: center;
     gap: 32px;
 }
+
+.PostPage__Image{
+    width: 80vw;
+    @media(min-width: 820px){
+        width: 770px;
+    }
+    @media(min-width: 1200px){
+        width: 1110px;
+    }
+}

@@ -1,31 +1,16 @@
 import CardDisplay from "@/components/organisms/CardDisplay/CardDisplay";
 import { getAllEntries } from '@/api/Contentful'
+import { dataToCard, titleToURL } from "@/utils/utils";
 
 export default async function Home() {
 
-  function titleToURL(title: string) {
-    const URL = title.replaceAll(" ", "-");
-    return URL;
-  }
-
   const data = await getAllEntries();
-  const Cards = data.data.postCollection.items.map((item: any) => {
-    return (
-      {
-        title: item.title,
-        description: item.description,
-        link: `/${titleToURL(item.title)}`,
-        image: { src: item.image.src.url, alt: item.image.alt },
-        tag: item.tagsCollection.items.map((tag: { title: any; color: any; }) => {
-          return (
-            { title: tag.title, color: tag.color }
-          )
-        })
-      }
-    )
-  });
+  const Cards = dataToCard(data.data.postCollection.items);
+  const recentNews = Cards.slice(0,3);
+
   return (
     <>
-      <CardDisplay Cards={Cards} title={"Todos os Posts"}></CardDisplay>
+      <CardDisplay title={"Notícias Recentes"} Cards={recentNews} Variant={"Secondary"}></CardDisplay>
+      <CardDisplay Cards={Cards} title={"Todos os Posts"} Variant={"Primary"}></CardDisplay>
     </>);
 }
