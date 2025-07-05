@@ -67,7 +67,7 @@ export async function getAllEntries(limit = 100) {
     }
 }
 
-export async function getEntry(contentType: any, title: any) {
+export async function getEntry(contentType: string, title: string) {
 
     try {
         const entry = await fetchGraphQL(
