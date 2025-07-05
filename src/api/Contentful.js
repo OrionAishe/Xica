@@ -42,9 +42,7 @@ export async function getRichText(title){
     const richText = await client.getEntries({
       content_type: 'post',
       'fields.title': title,
-      order: ['-sys.createdAt'],
     })
-
     return richText;
 }
 
