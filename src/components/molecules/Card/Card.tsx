@@ -23,7 +23,7 @@ const Card = (props: props) => {
 
     useEffect(() => {
         if (variant == 'Secondary') {
-            ref.current?.classList.add(`${styles.Card}${index}`);
+            ref.current?.classList.add(`${styles.Card + index}`);
         }
     }, [])
 

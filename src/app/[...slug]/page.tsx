@@ -16,7 +16,7 @@ export default async function BlogPost({ params }: BlogProps) {
   const data = await getEntry("post", URLtoTitle(slug[0]));
   const richtext = await getRichText(URLtoTitle(slug[0]));
 
-  const CardData = await getAllEntries();
+  /*const CardData = await getAllEntries();
 
   const CardFiltered = CardData.data.postCollection.items.map((item: any) => {
     const filteredItems = item.tagsCollection.items.filter((item: { title: string; }) => {
@@ -29,7 +29,7 @@ export default async function BlogPost({ params }: BlogProps) {
     return item.item;
   }).slice(0,3);
 
-  const Cards = dataToCard(CardFiltered);
+  const Cards = dataToCard(CardFiltered);*/
 
   function URLtoTitle(URL: string) {
     const Title = URL.replaceAll("-", " ").replace("/", "");
@@ -42,7 +42,6 @@ export default async function BlogPost({ params }: BlogProps) {
         <Title>{URLtoTitle(slug[0])}</Title>
         <img className={styles.PostPage__Image} src={data.data.postCollection.items[0].image.src.url} alt={data.data.postCollection.items[0].image.alt} />
         <Richtext text={richtext}></Richtext>
-        <CardDisplay title={"Notícias Relacionadas"} Cards={Cards} Variant={"Secondary"}></CardDisplay>
       </div>
     </>
   );
