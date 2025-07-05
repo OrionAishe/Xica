@@ -34,19 +34,20 @@ const {
 } = process.env
 
 const client = contentful.createClient({
-    space: SPACEID,
-    accessToken: ACCESSTOKEN,
+    space: SPACEID!,
+    accessToken: ACCESSTOKEN!,
 })
 
-export async function getRichText(title){
+export async function getRichText(title: string) {
     const richText = await client.getEntries({
-      content_type: 'post',
-      'fields.title': title,
+        content_type: 'post',
+        'fields.title': title,
     })
-    return richText;
+    
+    return richText.items[0].fields.texto;
 }
 
-async function fetchGraphQL(query) {
+async function fetchGraphQL(query: string) {
     const headers = {
         "Content-Type": "application/json",
         Authorization: `Bearer ${process.env.ACCESSTOKEN}`,
@@ -86,7 +87,7 @@ export async function getAllEntries(limit = 100) {
     }
 }
 
-export async function getEntry(contentType, title) {
+export async function getEntry(contentType: string, title: string) {
 
     try {
         const entry = await fetchGraphQL(
@@ -106,7 +107,7 @@ export async function getEntry(contentType, title) {
         const characteristicsData =
             entry.data?.[
                 `${contentType}Collection`
-            ]?.items?.[0]?.characteristicsCollection?.items.map((item) => {
+            ]?.items?.[0]?.characteristicsCollection?.items.map((item: { information: any; }) => {
                 return {
                     information: item.information,
                 };
