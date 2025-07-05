@@ -12,47 +12,6 @@
     }
 }
 
-.Card0 {
-    @media(min-width: 890px) {
-        grid-area: Card0;
-        max-width: max-content;
-        .Card__Image {
-            width: 770px;
-        }
-    }
-
-    @media(min-width: 1350px) {
-
-        .Card__Image {
-            width: 592px;
-        }
-    }
-}
-
-.Card1 {
-    @media(min-width: 890px) {
-        grid-area: Card1;
-        flex-direction: row;
-        max-width: max-content;
-
-        .Card__Image {
-            width: 320px;
-        }
-    }
-}
-
-.Card2 {
-    @media(min-width: 890px) {
-        grid-area: Card2;
-        flex-direction: row;
-        max-width: max-content;
-
-        .Card__Image {
-            width: 320px;
-        }
-    }
-}
-
 .Card__Tags {
     display: flex;
     margin-top: 24px;

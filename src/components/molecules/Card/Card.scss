@@ -1,0 +1,40 @@
+.Card0 {
+    @media(min-width: 890px) {
+        grid-area: Card0;
+        max-width: max-content;
+        img {
+            width: 770px;
+        }
+    }
+
+    @media(min-width: 1350px) {
+
+        img {
+            width: 592px;
+        }
+    }
+}
+
+.Card1 {
+    @media(min-width: 890px) {
+        grid-area: Card1;
+        flex-direction: row;
+        max-width: max-content;
+
+        img {
+            width: 320px;
+        }
+    }
+}
+
+.Card2 {
+    @media(min-width: 890px) {
+        grid-area: Card2;
+        flex-direction: row;
+        max-width: max-content;
+
+        img {
+            width: 320px;
+        }
+    }
+}

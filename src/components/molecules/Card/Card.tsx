@@ -1,6 +1,7 @@
 'use client'
 import Tag, { props as Tagprops } from '@/components/atoms/Tag/Tag';
 import styles from './Card.module.scss';
+import './Card.scss'
 import Link from 'next/link';
 import { useEffect, useRef } from 'react';
 
@@ -23,7 +24,7 @@ const Card = (props: props) => {
 
     useEffect(() => {
         if (variant == 'Secondary') {
-            ref.current?.classList.add(`${styles.Card + index}`);
+            ref.current?.classList.add(`Card${index}`);
         }
     }, [])
 
