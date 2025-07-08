@@ -15,21 +15,25 @@ export default async function BlogPost({ params }: BlogProps) {
   const { slug } = await params;
   const data = await getEntry("post", URLtoTitle(slug[0]));
   const richtext = await getRichText(URLtoTitle(slug[0]));
-
-  /*const CardData = await getAllEntries();
+  console.log(data);
+  const CardData = await getAllEntries();
 
   const CardFiltered = CardData.data.postCollection.items.map((item: any) => {
     const filteredItems = item.tagsCollection.items.filter((item: { title: string; }) => {
-      return item.title == "Leadership";
+      if (data.data.postCollection.items[0].tagsCollection.items[1] != null) {
+        return item.title == data.data.postCollection.items[0].tagsCollection.items[0].title || item.title == data.data.postCollection.items[0].tagsCollection.items[1].title
+      } else {
+        return item.title == data.data.postCollection.items[0].tagsCollection.items[0].title;
+      }
     })
-    return {item, filteredItems};
-  }).filter((item : any) => {
-    return item.filteredItems[0].title == "Leadership"
+    return { item, filteredItems };
+  }).filter((item: any) => {
+    return item.filteredItems != ""
   }).map((item: any) => {
     return item.item;
-  }).slice(0,3);
+  }).slice(0, 3);
 
-  const Cards = dataToCard(CardFiltered);*/
+  const Cards = dataToCard(CardFiltered);
 
   function URLtoTitle(URL: string) {
     const Title = URL.replaceAll("-", " ").replace("/", "");
@@ -42,6 +46,7 @@ export default async function BlogPost({ params }: BlogProps) {
         <Title>{URLtoTitle(slug[0])}</Title>
         <img className={styles.PostPage__Image} src={data.data.postCollection.items[0].image.src.url} alt={data.data.postCollection.items[0].image.alt} />
         <Richtext text={richtext}></Richtext>
+        <CardDisplay title={"Notícias Relacionadas"} Cards={Cards} Variant={"Secondary"} />
       </div>
     </>
   );

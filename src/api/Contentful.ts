@@ -18,15 +18,18 @@ const PAGE_GRAPHQL_FIELDS = `
 `;
 
 const POST_GRAPHQL_FIELDS = `
-texto{
-      json
-    },
 image{
     src{
         url
     },
     alt
 },
+tagsCollection{
+        items{
+        title
+        color
+    }
+}
 `
 const {
     ACCESSTOKEN,
