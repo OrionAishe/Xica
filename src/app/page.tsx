@@ -1,12 +1,12 @@
 import CardDisplay from "@/components/organisms/CardDisplay/CardDisplay";
 import { getAllEntries } from '@/api/Contentful'
-import { dataToCard, titleToURL } from "@/utils/utils";
+import { dataToCard } from "@/utils/utils";
 
 export default async function Home() {
 
   const data = await getAllEntries();
-  const Cards = dataToCard(data.data.postCollection.items);
-  const recentNews = Cards.slice(0,3);
+  const Cards = dataToCard(data.items);
+  const recentNews = Cards.slice(0, 3);
 
   return (
     <>

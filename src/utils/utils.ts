@@ -9,13 +9,13 @@
     return data.map((item: any) => {
     return (
       {
-        title: item.title,
-        description: item.description,
-        link: `/${titleToURL(item.title)}`,
-        image: { src: item.image.src.url, alt: item.image.alt },
-        tag: item.tagsCollection.items.map((tag: { title: any; color: any; }) => {
+        title: item.fields.title,
+        description: item.fields.description,
+        link: `/${titleToURL(item.fields.slug)}`,
+        image: { src: item.fields.image.fields.src.fields.file.url, alt: item.fields.image.fields.alt },
+        tag: item.fields.tags.map((tag: { fields: { title: any; color: any; }; }) => {
           return (
-            { title: tag.title, color: tag.color }
+            { title: tag.fields.title, color: tag.fields.color }
           )
         }),
         index: 0,

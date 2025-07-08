@@ -1,4 +1,4 @@
-import { getAllEntries, getEntry, getRichText } from "@/api/Contentful";
+import { getAllEntries, getEntry } from "@/api/Contentful";
 import Title from "@/components/atoms/Title/Title";
 import styles from './page.module.scss'
 import Richtext from "@/components/atoms/Richtext/Richtext";
@@ -13,17 +13,14 @@ interface BlogProps {
 
 export default async function BlogPost({ params }: BlogProps) {
   const { slug } = await params;
-  const data = await getEntry("post", URLtoTitle(slug[0]));
-  const richtext = await getRichText(URLtoTitle(slug[0]));
-  console.log(data);
+  const data = await getEntry(URLtoTitle(slug[0]));
   const CardData = await getAllEntries();
-
-  const CardFiltered = CardData.data.postCollection.items.map((item: any) => {
-    const filteredItems = item.tagsCollection.items.filter((item: { title: string; }) => {
-      if (data.data.postCollection.items[0].tagsCollection.items[1] != null) {
-        return item.title == data.data.postCollection.items[0].tagsCollection.items[0].title || item.title == data.data.postCollection.items[0].tagsCollection.items[1].title
+  const CardFiltered = CardData.items.map((item: any) => {
+    const filteredItems = item.fields.tags.filter((item: { title: string; }) => {
+      if (data.fields.tags > 1) {
+        return item.title == data.fields.tags[0].fields.title || item.title == data.fields.tags[1].fields.title
       } else {
-        return item.title == data.data.postCollection.items[0].tagsCollection.items[0].title;
+        return item.title == data.fields.tags[0].fields.title;
       }
     })
     return { item, filteredItems };
@@ -43,9 +40,9 @@ export default async function BlogPost({ params }: BlogProps) {
   return (
     <>
       <div className={styles.PostPage}>
-        <Title>{URLtoTitle(slug[0])}</Title>
-        <img className={styles.PostPage__Image} src={data.data.postCollection.items[0].image.src.url} alt={data.data.postCollection.items[0].image.alt} />
-        <Richtext text={richtext}></Richtext>
+        <Title>{data.fields.title}</Title>
+        <img className={styles.PostPage__Image} src={data.fields.image.fields.src.fields.file.url} alt={data.fields.image.fields.alt} />
+        <Richtext text={data.fields.texto}></Richtext>
         <CardDisplay title={"Notícias Relacionadas"} Cards={Cards} Variant={"Secondary"} />
       </div>
     </>
