@@ -16,13 +16,14 @@ export default async function BlogPost({ params }: BlogProps) {
   const data = await getEntry(URLtoTitle(slug[0]));
   const CardData = await getAllEntries();
   const CardFiltered = CardData.items.map((item: any) => {
-    const filteredItems = item.fields.tags.filter((item: { title: string; }) => {
+    const filteredItems = item.fields.tags.filter((item: { fields: { title: string; }; }) => {
       if (data.fields.tags > 1) {
-        return item.title == data.fields.tags[0].fields.title || item.title == data.fields.tags[1].fields.title
+        return item.fields.title == data.fields.tags[0].fields.title || item.fields.title == data.fields.tags[1].fields.title
       } else {
-        return item.title == data.fields.tags[0].fields.title;
+        return item.fields.title == data.fields.tags[0].fields.title;
       }
     })
+    console.log(item)
     return { item, filteredItems };
   }).filter((item: any) => {
     return item.filteredItems != ""
@@ -38,13 +39,11 @@ export default async function BlogPost({ params }: BlogProps) {
   }
 
   return (
-    <>
       <div className={styles.PostPage}>
         <Title>{data.fields.title}</Title>
         <img className={styles.PostPage__Image} src={data.fields.image.fields.src.fields.file.url} alt={data.fields.image.fields.alt} />
         <Richtext text={data.fields.texto}></Richtext>
         <CardDisplay title={"Notícias Relacionadas"} Cards={Cards} Variant={"Secondary"} />
       </div>
-    </>
   );
 }
