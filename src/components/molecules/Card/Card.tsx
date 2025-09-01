@@ -11,7 +11,6 @@ export interface props {
         alt: string;
     }
     title: string;
-    description: string;
     tag: Tagprops[];
     link: string;
     index: number;
@@ -19,7 +18,7 @@ export interface props {
 }
 
 const Card = (props: props) => {
-    const { title, description, image, tag, link, index, variant } = props;
+    const { title, image, tag, link, index, variant } = props;
     const ref = useRef<HTMLAnchorElement>(null);
 
     useEffect(() => {
@@ -33,7 +32,6 @@ const Card = (props: props) => {
             <img className={styles.Card__Image} src={image.src} alt={image.alt} />
             <div className={styles.Card__Text}>
                 <h2>{title}</h2>
-                <p>{description}</p>
                 <div className={styles.Card__Tags}>
                     {tag.map((item, index) => {
                         return (

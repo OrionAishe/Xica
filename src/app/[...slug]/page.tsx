@@ -3,7 +3,7 @@ import Title from "@/components/atoms/Title/Title";
 import styles from './page.module.scss'
 import Richtext from "@/components/atoms/Richtext/Richtext";
 import CardDisplay from "@/components/organisms/CardDisplay/CardDisplay";
-import { dataToCard, titleToURL } from "@/utils/utils";
+import { dataToCard } from "@/utils/utils";
 
 interface BlogProps {
   params: Promise<{
@@ -17,13 +17,12 @@ export default async function BlogPost({ params }: BlogProps) {
   const CardData = await getAllEntries();
   const CardFiltered = CardData.items.map((item: any) => {
     const filteredItems = item.fields.tags.filter((item: { fields: { title: string; }; }) => {
-      if (data.fields.tags > 1) {
-        return item.fields.title == data.fields.tags[0].fields.title || item.fields.title == data.fields.tags[1].fields.title
+      if (data?.fields?.tags > 1) {
+        return item.fields.title == data?.fields.tags[0].fields.title || item.fields.title == data?.fields.tags[1].fields.title
       } else {
-        return item.fields.title == data.fields.tags[0].fields.title;
+        return item.fields.title == data?.fields.tags[0].fields.title;
       }
     })
-    console.log(item)
     return { item, filteredItems };
   }).filter((item: any) => {
     return item.filteredItems != ""
@@ -40,9 +39,10 @@ export default async function BlogPost({ params }: BlogProps) {
 
   return (
       <div className={styles.PostPage}>
-        <Title>{data.fields.title}</Title>
-        <img className={styles.PostPage__Image} src={data.fields.image.fields.src.fields.file.url} alt={data.fields.image.fields.alt} />
-        <Richtext text={data.fields.texto}></Richtext>
+        <Title>{data?.fields.title}</Title>
+        <h2>{data?.fields.description}</h2>
+        <img className={styles.PostPage__Image} src={data?.fields.image.fields.src.fields.file.url} alt={data?.fields.image.fields.alt} />
+        <Richtext text={data?.fields.texto}></Richtext>
         <CardDisplay title={"Notícias Relacionadas"} Cards={Cards} Variant={"Secondary"} />
       </div>
   );

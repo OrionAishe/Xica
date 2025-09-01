@@ -1,11 +1,13 @@
+'use client'
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { BLOCKS } from '@contentful/rich-text-types';
 import styles from './Richtext.module.scss'
+import { InstagramEmbed } from "react-social-media-embed";
 
 interface props {
-    text: any;
+  text: any;
 }
-const Richtext = ({text}: props) => {
+const Richtext = ({ text }: props) => {
 
   const options = {
     renderNode: {
@@ -19,13 +21,21 @@ const Richtext = ({text}: props) => {
           />
         );
       },
+      [BLOCKS.EMBEDDED_ENTRY]: (node: any) => {
+        console.log(node.data.target.fields.link);
+        return (
+          <>
+            <InstagramEmbed url={node.data.target.fields.link} width={328} />
+          </>
+        )
+      }
     }
   };
-    return (
-        <>
-            {documentToReactComponents(text, options)}
-        </>
-    )
+  return (
+    <>
+      {documentToReactComponents(text, options)}
+    </>
+  )
 }
 
 export default Richtext;

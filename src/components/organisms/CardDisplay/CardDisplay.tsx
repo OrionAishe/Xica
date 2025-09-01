@@ -20,7 +20,6 @@ const CardDisplay = (props: props) => {
                                 src: item.image.src,
                                 alt: item.image.alt
                             }} title={item.title}
-                            description={item.description}
                             tag={item.tag}
                             link={item.link}
                             index={index} variant={Variant}>
