@@ -24,10 +24,16 @@ const Richtext = ({ text }: props) => {
       [BLOCKS.EMBEDDED_ENTRY]: (node: any) => {
         return (
           <>
-            <InstagramEmbed url={node.data.target.fields.link} width={328} />
+            <InstagramEmbed className={styles.Richtext__instagram} url={node.data.target.fields.link} width={328} />
           </>
         )
       },
+      [BLOCKS.QUOTE]: (node: any) => {
+        console.log(node);
+        return <div className={styles.Richtext__quote}>
+        {documentToReactComponents(node)}
+        </div>
+      }
     }
   };
   return (
