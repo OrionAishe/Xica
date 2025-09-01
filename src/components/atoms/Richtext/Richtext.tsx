@@ -22,13 +22,12 @@ const Richtext = ({ text }: props) => {
         );
       },
       [BLOCKS.EMBEDDED_ENTRY]: (node: any) => {
-        console.log(node.data.target.fields.link);
         return (
           <>
             <InstagramEmbed url={node.data.target.fields.link} width={328} />
           </>
         )
-      }
+      },
     }
   };
   return (

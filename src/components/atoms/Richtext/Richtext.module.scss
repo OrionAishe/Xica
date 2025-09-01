@@ -1,7 +1,8 @@
-.Richtext__Image{
+.Richtext__Image {
     width: 90vw;
+    align-self: center;
 
-    @media(min-width: 820px){
+    @media(min-width: 820px) {
         width: fit-content;
         height: fit-content;
         max-width: 60vw;

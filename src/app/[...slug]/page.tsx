@@ -40,7 +40,7 @@ export default async function BlogPost({ params }: BlogProps) {
   return (
       <div className={styles.PostPage}>
         <Title>{data?.fields.title}</Title>
-        <h2>{data?.fields.description}</h2>
+        <h3>{data?.fields.description}</h3>
         <img className={styles.PostPage__Image} src={data?.fields.image.fields.src.fields.file.url} alt={data?.fields.image.fields.alt} />
         <Richtext text={data?.fields.texto}></Richtext>
         <CardDisplay title={"Notícias Relacionadas"} Cards={Cards} Variant={"Secondary"} />
